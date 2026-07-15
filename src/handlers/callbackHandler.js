@@ -1,3 +1,4 @@
+import { answerCallbackQuery } from "../telegram";
 
 export async function handleCallback(query, env) {
     const data = query.data;
@@ -5,6 +6,11 @@ export async function handleCallback(query, env) {
     switch (data) {
 
         case "copy":
+
+            await answerCallbackQuery(
+                env,
+                query.id
+            );
             return;
 
         default:
