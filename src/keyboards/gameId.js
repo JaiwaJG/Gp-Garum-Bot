@@ -6,9 +6,8 @@ export function gameIdKeyboard() {
                 {
                     text: "📋 Copy",
                     callback_data: "copy"
-                }
-            ],
-            [
+                },
+            
                 {
                     text: "🗑 Delete",
                     callback_data: "delete"
