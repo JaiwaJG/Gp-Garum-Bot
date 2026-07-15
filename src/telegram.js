@@ -3,6 +3,7 @@ export async function callTelegram(
     method,
     data
 ) {
+
     const API = `https://api.telegram.org/bot${env.BOT_TOKEN}`;
 
     const res = await fetch(
@@ -33,6 +34,7 @@ export async function sendMessage(
         {
             chat_id: chatId,
             text,
+            parse_mode: "HTML",
             ...options
         }
     );
@@ -40,12 +42,14 @@ export async function sendMessage(
 }
 
 export async function answerCallbackQuery(
+    env,
     callbackId,
     text = "",
     alert = false
 ) {
 
     return callTelegram(
+        env,
         "answerCallbackQuery",
         {
             callback_query_id: callbackId,
@@ -57,11 +61,13 @@ export async function answerCallbackQuery(
 }
 
 export async function deleteMessage(
+    env,
     chatId,
     messageId
 ) {
 
     return callTelegram(
+        env,
         "deleteMessage",
         {
             chat_id: chatId,
@@ -72,6 +78,7 @@ export async function deleteMessage(
 }
 
 export async function editMessageText(
+    env,
     chatId,
     messageId,
     text,
@@ -79,6 +86,7 @@ export async function editMessageText(
 ) {
 
     return callTelegram(
+        env,
         "editMessageText",
         {
             chat_id: chatId,
@@ -91,11 +99,13 @@ export async function editMessageText(
 }
 
 export async function getChatMember(
+    env,
     chatId,
     userId
 ) {
 
     return callTelegram(
+        env,
         "getChatMember",
         {
             chat_id: chatId,
@@ -106,11 +116,13 @@ export async function getChatMember(
 }
 
 export async function pinChatMessage(
+    env,
     chatId,
     messageId
 ) {
 
     return callTelegram(
+        env,
         "pinChatMessage",
         {
             chat_id: chatId,

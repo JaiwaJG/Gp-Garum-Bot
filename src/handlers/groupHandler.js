@@ -1,4 +1,6 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
+import { calcCommand } from "../commands/calc.js";
+
 export async function handleGroup(update) {
 
     const text = (update.message.text || "").trim();
@@ -14,8 +16,11 @@ export async function handleGroup(update) {
     }
 
     console.log("GROUP:", text);
-    
+
     switch (text.split(" ")[0].toLowerCase()) {
+
+        case "/calc":
+            return await calcCommand(update);
 
         default:
             return;
