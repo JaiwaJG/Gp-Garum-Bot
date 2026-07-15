@@ -12,10 +12,14 @@ export async function calcCommand(update, env) {
 
     if (!isAdmin) return;
 
+    if (!message.reply_to_message) return;
+
+    const gameId = message.reply_to_message.text?.trim();
+
     await sendMessage(
         env,
         message.chat.id,
-        "<b> Calc Command </b>"
+        `<b>${gameId}</b>`
     );
 
     return;
