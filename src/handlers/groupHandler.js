@@ -1,9 +1,28 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { calcCommand } from "../commands/calc.js";
+import { parseGameId } from "../parser.js";
+import { sendMessage } from "../telegram.js";
 
 export async function handleGroup(update, env) {
 
     const text = (update.message.text || "").trim();
+    const gameId = parseGameId(text);
+
+    if (gameId) {
+        await sendMessage(
+            env,
+            update.message.chat.id,
+            gameId,
+            {
+                reply_parameters: {
+                    message_id: update.message.message_id
+                },
+                parse_mode: "HTML"
+            }
+        );
+        return;
+
+    }
     if (
         text === "/start" ||
         text === "/usage"
