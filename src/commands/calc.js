@@ -12,7 +12,17 @@ export async function calcCommand(update, env) {
 
     if (!isAdmin) return;
 
-    if (!message.reply_to_message) return;
+    if (!message.reply_to_message) {
+        await sendMessage(
+            env,
+            message.chat.id,
+            "<b> Please reply to a Game ID. </b>",
+            {
+                parse_mode: "HTML"
+            }
+        );
+     return;
+    }
 
     const gameId = message.reply_to_message.text?.trim();
 
