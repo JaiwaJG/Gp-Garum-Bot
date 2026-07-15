@@ -5,6 +5,7 @@ export async function calcCommand(update, env) {
 
     const message = update.message;
     const isAdmin = await isGroupAdmin(
+        env,
         message.chat.id,
         message.from.id
     );

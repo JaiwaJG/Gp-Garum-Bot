@@ -1,11 +1,13 @@
 import { getChatMember } from "../telegram.js";
 
 export async function isGroupAdmin(
+    env,
     chatId,
     userId
 ) {
 
     const result = await getChatMember(
+        env,
         chatId,
         userId
     );
