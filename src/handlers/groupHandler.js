@@ -2,6 +2,7 @@ import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { calcCommand } from "../commands/calc.js";
 import { parseGameId } from "../parser.js";
 import { sendMessage } from "../telegram.js";
+import { gameIdKeyboard } from "../keyboards/gameId.js";
 
 export async function handleGroup(update, env) {
 
@@ -17,7 +18,8 @@ export async function handleGroup(update, env) {
                 reply_parameters: {
                     message_id: update.message.message_id
                 },
-                parse_mode: "HTML"
+                parse_mode: "HTML",
+                reply_markup: gameIdKeyboard()
             }
         );
         return;
