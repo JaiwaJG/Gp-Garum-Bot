@@ -1,7 +1,7 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { calcCommand } from "../commands/calc.js";
 
-export async function handleGroup(update) {
+export async function handleGroup(update, env) {
 
     const text = (update.message.text || "").trim();
     if (
