@@ -20,7 +20,7 @@ export async function handleGroup(update) {
     switch (text.split(" ")[0].toLowerCase()) {
 
         case "/calc":
-            return await calcCommand(update);
+            return await calcCommand(update, env);
 
         default:
             return;

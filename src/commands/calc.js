@@ -1,7 +1,7 @@
-import { isGroupAdmin } from "../permissions/groupAdmin";
-import { sendMesage } from "../telegram.js";
+import { isGroupAdmin } from "../permissions/groupAdmin.js";
+import { sendMessage } from "../telegram.js";
 
-export async function calcCommand(update) {
+export async function calcCommand(update, env) {
 
     const message = update.message;
     const isAdmin = await isGroupAdmin(
