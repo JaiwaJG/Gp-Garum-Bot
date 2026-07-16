@@ -21,7 +21,6 @@ export async function handleGroup(update, env) {
     //const session = await env.CALC_SESSION.get(
     //    String(message.from.id)
     //);
-
     const session = "on";
 
     if (
@@ -29,13 +28,17 @@ export async function handleGroup(update, env) {
         !text.startsWith("/")
     ) {
 
-        if (!/^[0-9+\-*/().\s]+$/.test(text)) {
-            return;
-        }
+        //if (!/^[0-9+\-*/().\s]+$/.test(text)) {
+        //   return;
+        //}
 
         //const result = calculate(text);
-
         const result = 1234;
+        await sendMessage(
+            env,
+            message.chat.id,
+            "RESULT BLOCK"
+        )
 
         if (result === null) {
             return;
