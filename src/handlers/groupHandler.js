@@ -8,6 +8,14 @@ import { banCommand } from "../commands/ban.js";
 export async function handleGroup(update, env) {
 
     const message = update.message;
+
+    // debug code
+    await sendMessage(
+        env,
+        message.chat.id,
+        "HANDLEGROUP"
+    );
+
     const text = (message.text || "").trim();
 
     //const session = await env.CALC_SESSION.get(
@@ -38,7 +46,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             message.chat.id,
-            `<b>${text} = ${formatted} Ks</code>`,
+            `<b>${text} = ${formatted} Ks</b>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
