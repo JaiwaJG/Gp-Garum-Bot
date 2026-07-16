@@ -6,6 +6,10 @@ export function calculate(expression) {
             `"use strict"; return (${expression})`
         )();
 
+        if (!Number.isFinite(result)) {
+            return null;
+        }
+
         return result;
 
     } catch {
