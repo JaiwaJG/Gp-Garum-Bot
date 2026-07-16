@@ -9,28 +9,20 @@ export async function handleGroup(update, env) {
 
     const message = update.message;
 
-    // debug code
-    await sendMessage(
-        env,
-        message.chat.id,
-        "HANDLEGROUP"
-    );
-
     const text = (message.text || "").trim();
 
-    //const session = await env.CALC_SESSION.get(
-    //    String(message.from.id)
-    //);
-    const session = "on";
+    const session = await env.CALC_SESSION.get(
+        String(message.from.id)
+    );
 
     if (
         session === "on" &&
         !text.startsWith("/")
     ) {
 
-        //if (!/^[0-9+\-*/().\s]+$/.test(text)) {
-        //   return;
-        //}
+        if (!/^[0-9+\-*/().\s]+$/.test(text)) {
+           return;
+        }
 
         const result = calculate(text);
 

@@ -27,7 +27,10 @@ export async function handleUsage(update, env) {
 /ban
 /restrict
 
-ℹ️ Only Group Admins can use admin commands.`
+ℹ️ Only Group Admins can use admin commands.`,
+{
+    parse_mode: "HTML"
+}
     );
 
 }

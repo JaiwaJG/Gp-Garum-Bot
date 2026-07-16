@@ -47,7 +47,7 @@ export async function banCommand(update, env) {
     await sendMessage(
         env,
         message.chat.id,
-        "<b>🚫 BANNED</b>",
+        "<tg-emoji emoji-id='6091190140368071716'>🚫</tg-emoji> <b> BANNED</b>",
         {
             parse_mode: "HTML",
             reply_parameters: {
