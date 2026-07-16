@@ -25,7 +25,9 @@ export async function handleGroup(update, env) {
             return;
         }
 
-        const result = calculate(text);
+        //const result = calculate(text);
+
+        const result = 1234;
 
         if (result === null) {
             return;
