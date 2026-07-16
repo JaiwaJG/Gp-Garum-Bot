@@ -14,15 +14,7 @@ export async function handleGroup(update, env) {
 
     if (session) {
 
-        //const result = calculate(text);
-
-        await sendMessage(
-            env,
-            update.message.chat.id,
-            text
-        );
-
-        return;
+        const result = calculate(text);
 
         await sendMessage(
             env,
@@ -35,8 +27,6 @@ export async function handleGroup(update, env) {
                 }
             }
         );
-
-        calcSessions.delete(update.message.from.id);
 
         return;
 
