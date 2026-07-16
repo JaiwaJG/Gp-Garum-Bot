@@ -1,11 +1,13 @@
-export function gameIdKeyboard() {
+export function gameIdKeyboard(gameId) {
 
     return {
         inline_keyboard: [
             [
                 {
                     text: "📋 Copy",
-                    callback_data: "copy"
+                    copy_text: {
+                        text: gameId
+                    }
                 },
             
                 {

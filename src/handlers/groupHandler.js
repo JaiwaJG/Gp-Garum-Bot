@@ -19,7 +19,7 @@ export async function handleGroup(update, env) {
                     message_id: update.message.message_id
                 },
                 parse_mode: "HTML",
-                reply_markup: gameIdKeyboard()
+                reply_markup: gameIdKeyboard(gameId)
             }
         );
         return;
