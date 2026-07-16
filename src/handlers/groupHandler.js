@@ -1,4 +1,3 @@
-import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { calcCommand } from "../commands/calc.js";
 import { parseGameId } from "../parser.js";
 import { sendMessage } from "../telegram.js";
@@ -12,7 +11,14 @@ export async function handleGroup(update, env) {
 
     const session = calcSessions.get(update.message.from.id);
 
-    if (session) {
+    if (
+        session &&
+        !text.startsWith("/")
+    ) {
+
+        if (!/^[0-9+\-*/().\s]+$/.test(text)) {
+            return;
+        }
 
         const result = calculate(text);
 
@@ -23,13 +29,17 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             update.message.chat.id,
-            `<code>${text} = ${result} Ks</code>`,
+            <code>${text} = ${result} Ks</code>,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
                     message_id: update.message.message_id
                 }
             }
+        );
+
+        calcSessions.delete(
+            update.message.from.id
         );
 
         return;
@@ -39,21 +49,24 @@ export async function handleGroup(update, env) {
     const gameId = parseGameId(text);
 
     if (gameId) {
+
         await sendMessage(
             env,
             update.message.chat.id,
             gameId,
             {
+                parse_mode: "HTML",
                 reply_parameters: {
                     message_id: update.message.message_id
                 },
-                parse_mode: "HTML",
                 reply_markup: gameIdKeyboard(gameId)
             }
         );
+
         return;
 
     }
+
     if (
         text === "/start" ||
         text === "/usage"
@@ -62,10 +75,8 @@ export async function handleGroup(update, env) {
     }
 
     if (!text.startsWith("/")) {
-    return;
+        return;
     }
-
-    console.log("GROUP:", text);
 
     switch (text.split(" ")[0].toLowerCase()) {
 
