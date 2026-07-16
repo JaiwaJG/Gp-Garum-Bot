@@ -1,5 +1,5 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
-import { sendMessage } from "../telegram.js";
+import { sendMessage, banChatMember } from "../telegram.js";
 
 export async function banCommand(update, env) {
 
@@ -33,15 +33,12 @@ export async function banCommand(update, env) {
 
     }
 
-    const target = message.reply_to_message.text?.trim();
+    const targetUserId = message.reply_to_message.from.id;
 
-    if (!target) {
-        return;
-    }
-
-    await env.BAN_LIST.put(
-        target,
-        "1"
+    await banChatMember(
+        env,
+        message.chat.id,
+        targetUserId
     );
 
     await sendMessage(

@@ -131,3 +131,18 @@ export async function pinChatMessage(
     );
 
 }
+
+export async function banChatMember(
+    env,
+    chatId,
+    userId
+) {
+    return callTelegram(
+        env,
+        "banChatMember",
+        {
+            chat_id: chatId,
+            user_id: userId
+        }
+    );
+}
