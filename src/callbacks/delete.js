@@ -23,10 +23,20 @@ export async function deleteCallback(query, env) {
 
     }
 
-    return await deleteMessage(
+    await deleteMessage(
         env,
         query.message.chat.id,
         query.message.message_id
     );
+
+    if (query.message.reply_to_message) {
+        await deleteMessage(
+            env,
+            query.message.chat.id,
+            query.message.reply_to_message.message_id
+        );
+    }
+
+    return;
 
 }
