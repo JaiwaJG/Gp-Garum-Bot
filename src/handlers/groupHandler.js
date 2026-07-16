@@ -3,6 +3,7 @@ import { parseGameId } from "../parser.js";
 import { sendMessage } from "../telegram.js";
 import { gameIdKeyboard } from "../keyboards/gameId.js";
 import { calculate } from "../utils/calculator.js";
+import { banCommand } from "../commands/ban.js";
 
 export async function handleGroup(update, env) {
 
@@ -86,6 +87,9 @@ export async function handleGroup(update, env) {
 
         case "/calc":
             return await calcCommand(update, env);
+
+        case "/ban":
+            return await banCommand(update, env);
 
         default:
             return;
