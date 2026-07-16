@@ -27,7 +27,7 @@ export async function calcCommand(update, env) {
         env,
         message.chat.id,
         //"<b>🧮 Calculator Mode ON</b>",
-        "<tg-emoji emoji-id='5190741648237161191'>🧮</tg-emoji> <b> Calculator Mode ON</b>",
+        "<tg-emoji emoji-id='5190741648237161191'>🧮</tg-emoji>\n<b> Calculator Mode ON</b>",
         {
             parse_mode: "HTML",
             reply_parameters: {
