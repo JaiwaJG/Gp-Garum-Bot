@@ -16,6 +16,10 @@ export async function handleGroup(update, env) {
 
         const result = calculate(text);
 
+        if (result === null) {
+            return;
+        }
+
         await sendMessage(
             env,
             update.message.chat.id,
@@ -23,7 +27,7 @@ export async function handleGroup(update, env) {
             {
                 parse_mode: "HTML",
                 reply_parameters: {
-                    message_id: session.replyMessageId
+                    message_id: update.message.message_id
                 }
             }
         );
