@@ -1,12 +1,10 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { sendMessage } from "../telegram.js";
-import { calculate } from "../utils/calculator.js";
 import { calcSessions } from "../database.js";
 
 export async function calcCommand(update, env) {
 
     const message = update.message;
-    const text = message.text?.trim() ?? "";
 
     const isAdmin = await isGroupAdmin(
         env,
@@ -16,65 +14,19 @@ export async function calcCommand(update, env) {
 
     if (!isAdmin) return;
 
-    if (!message.reply_to_message) {
-
-        await sendMessage(
-            env,
-            message.chat.id,
-            "<b>Please reply to a Game ID.</b>",
-            {
-                parse_mode: "HTML",
-                reply_parameters: {
-                    message_id: message.message_id
-                }
-            }
-        );
-
-        return;
-
-    }
-
-    const gameId = message.reply_to_message.text.trim();
-
     calcSessions.set(
         message.from.id,
-        {
-            chatId: message.chat.id,
-            gameId,
-            replyMessageId: message.reply_to_message.message_id
-        }
+        true
     );
-
-    const expression = text.replace("/calc", "").trim();
-
-    if (!expression) {
-
-        await sendMessage(
-            env,
-            message.chat.id,
-            "<b>Reply with your calculation.</b>",
-            {
-                parse_mode: "HTML",
-                reply_parameters: {
-                    message_id: message.message_id
-                }
-            }
-        );
-
-        return;
-
-    }
-
-    const result = calculate(expression);
 
     await sendMessage(
         env,
         message.chat.id,
-        `${gameId ? `<b>${gameId}</b>\n\n` : ""}<code>${expression} = ${result} Ks</code>`,
+        "<b>🧮 Calculator Mode ON</b>\n\nSend your calculation.",
         {
             parse_mode: "HTML",
             reply_parameters: {
-                message_id: message.reply_to_message.message_id
+                message_id: message.message_id
             }
         }
     );
