@@ -33,7 +33,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             message.chat.id,
-            `<b>${text} = ${formatted} Ks</b>`,
+            `<code>${text} = ${formatted} Ks</code>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
