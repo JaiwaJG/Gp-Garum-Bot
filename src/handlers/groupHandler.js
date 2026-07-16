@@ -9,16 +9,14 @@ export async function handleGroup(update, env) {
 
     const text = (update.message.text || "").trim();
 
-    const session = calcSessions.get(update.message.from.id);
+    const session = await env.CALC_SESSION.get(
+        String(message.from.id)
+    );
 
     if (
-        session &&
+        session === "on" &&
         !text.startsWith("/")
     ) {
-
-        if (!/^[0-9+\-*/().\s]+$/.test(text)) {
-            return;
-        }
 
         const result = calculate(text);
 
@@ -28,18 +26,18 @@ export async function handleGroup(update, env) {
 
         await sendMessage(
             env,
-            update.message.chat.id,
+            message.chat.id,
             <code>${text} = ${result} Ks</code>,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
-                    message_id: update.message.message_id
+                    message_id: message.message_id
                 }
             }
         );
 
-        calcSessions.delete(
-            update.message.from.id
+        await env.CALC_SESSION.delete(
+            String(message.from.id)
         );
 
         return;

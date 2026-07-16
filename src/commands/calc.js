@@ -1,6 +1,5 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
 import { sendMessage } from "../telegram.js";
-import { calcSessions } from "../database.js";
 
 export async function calcCommand(update, env) {
 
@@ -16,9 +15,12 @@ export async function calcCommand(update, env) {
         return;
     }
 
-    calcSessions.set(
-        message.from.id,
-        true
+    await env.CALC_SESSION.put(
+        String(message.from.id),
+        "on",
+        {
+            expirationTtl: 60
+        }
     );
 
     await sendMessage(
