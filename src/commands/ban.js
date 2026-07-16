@@ -30,8 +30,15 @@ export async function banCommand(update, env) {
         );
 
         return;
-
     }
+
+    const targetUser = message.reply_to_message.from;
+    const username = targetUser.username
+        ? `@${targetUser.username}`
+        : "None";
+    const targetUserId = targetUser.id;
+    const targetUsername = targetUser.username || "No Username";
+    const targetName = targetUser.first_name;
 
     const targetUserId = message.reply_to_message.from.id;
 
@@ -44,7 +51,10 @@ export async function banCommand(update, env) {
     await sendMessage(
         env,
         message.chat.id,
-        "<tg-emoji emoji-id='6091190140368071716'>🚫</tg-emoji> <b> BANNED</b>",
+`<tg-emoji emoji-id='6091190140368071716'>🚫</tg-emoji> <b>BANNED</b>
+        
+<tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji> <b>UserName:</b> <code>@${targetUsername}</code>
+<tg-emoji emoji-id='6309581148536183273'>🆔</tg-emoji> <b>UserId  :</b> <code>@${targetUserId}</code>`,
         {
             parse_mode: "HTML",
             reply_parameters: {
