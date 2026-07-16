@@ -4,12 +4,14 @@ export function parseGameId(text) {
         return null;
     }
 
-    const value = text.trim();
+    const match = text.match(
+        /\b(\d{5,})\b(?:\s*\(\d+\))?/
+    );
 
-    if (!/^\d+$/.test(value)) {
+    if (!match) {
         return null;
     }
 
-    return value;
+    return match[1];
 
 }

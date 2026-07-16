@@ -7,7 +7,7 @@ export async function handleUsage(update, env) {
     await sendMessage(
         env,
         chatId,
-`📖 GP Garum Bot Usage
+`<tg-emoji emoji-id='5258328383183396223'>📖</tg-emoji> GP Garum Bot Usage
 
 👥 Group Features
 

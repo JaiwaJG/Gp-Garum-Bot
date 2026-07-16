@@ -59,7 +59,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             message.chat.id,
-            gameId,
+`<tg-emoji emoji-id='5458668249396827657'>🎅</tg-emoji> <code>${gameId}</code>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {

@@ -9,7 +9,7 @@ export async function handleStart(update, env) {
     await sendMessage(
         env,
         chatId,
-`Hello, <b>${firstName}</b>
+`Hello, <b>${firstName}</b> <tg-emoji emoji-id='6059615271679696088'>✅</tg-emoji>
 
 Welcome to GP Garum Bot.
 
