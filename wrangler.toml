@@ -3,3 +3,11 @@ name = "gp-garum-bot"
 main = "src/worker.js"
 
 compatibility_date = "2026-07-15"
+
+[[kv_namespaces]]
+binding = "CALC_SESSION"
+id = "e8568c0312594023921b9d956f2959da"
+
+[[kv_namespaces]]
+binding = "BAN_LIST"
+id = "e8568c0312594023921b9d956f2959da"
