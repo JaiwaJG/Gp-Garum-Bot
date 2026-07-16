@@ -14,7 +14,7 @@ export async function handleGroup(update, env) {
 
     if (session) {
 
-        const result = eval(text);
+        const result = calculate(text);
 
         await sendMessage(
             env,
