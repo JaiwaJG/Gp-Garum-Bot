@@ -2,12 +2,12 @@ import { calcCommand } from "../commands/calc.js";
 import { parseGameId } from "../parser.js";
 import { sendMessage } from "../telegram.js";
 import { gameIdKeyboard } from "../keyboards/gameId.js";
-import { calcSessions } from "../database.js";
 import { calculate } from "../utils/calculator.js";
 
 export async function handleGroup(update, env) {
 
-    const text = (update.message.text || "").trim();
+    const message = update.message;
+    const text = (message.text || "").trim();
 
     const session = await env.CALC_SESSION.get(
         String(message.from.id)
@@ -18,6 +18,10 @@ export async function handleGroup(update, env) {
         !text.startsWith("/")
     ) {
 
+        if (!/^[0-9+\-*/().\s]+$/.test(text)) {
+            return;
+        }
+
         const result = calculate(text);
 
         if (result === null) {
@@ -27,7 +31,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             message.chat.id,
-            <code>${text} = ${result} Ks</code>,
+            `<code>${text} = ${result} Ks</code>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
@@ -50,12 +54,12 @@ export async function handleGroup(update, env) {
 
         await sendMessage(
             env,
-            update.message.chat.id,
+            message.chat.id,
             gameId,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
-                    message_id: update.message.message_id
+                    message_id: message.message_id
                 },
                 reply_markup: gameIdKeyboard(gameId)
             }
