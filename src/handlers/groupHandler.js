@@ -19,7 +19,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             update.message.chat.id,
-            `<b>${session.gameId}</b>\n\n<code>${text} = ${result} Ks</code>`,
+            `<code>${text} = ${result} Ks</code>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
