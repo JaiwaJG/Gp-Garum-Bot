@@ -12,7 +12,9 @@ export async function calcCommand(update, env) {
         message.from.id
     );
 
-    if (!isAdmin) return;
+    if (!isAdmin) {
+        return;
+    }
 
     calcSessions.set(
         message.from.id,
@@ -22,7 +24,7 @@ export async function calcCommand(update, env) {
     await sendMessage(
         env,
         message.chat.id,
-        "<b>🧮 Calculator Mode ON</b>\n\nSend your calculation.",
+        "<b>🧮 Calculator Mode ON</b>",
         {
             parse_mode: "HTML",
             reply_parameters: {
@@ -30,7 +32,5 @@ export async function calcCommand(update, env) {
             }
         }
     );
-
-    return;
 
 }
