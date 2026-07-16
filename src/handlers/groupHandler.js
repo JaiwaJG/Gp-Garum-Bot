@@ -32,13 +32,7 @@ export async function handleGroup(update, env) {
         //   return;
         //}
 
-        //const result = calculate(text);
-        const result = 1234;
-        await sendMessage(
-            env,
-            message.chat.id,
-            "RESULT BLOCK"
-        )
+        const result = calculate(text);
 
         if (result === null) {
             return;
