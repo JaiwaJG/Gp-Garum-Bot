@@ -5,7 +5,6 @@ export async function isGroupAdmin(
     chatId,
     userId
 ) {
-
     const result = await getChatMember(
         env,
         chatId,

@@ -1,12 +1,15 @@
 import { isGroupAdmin } from "../permissions/groupAdmin.js";
-import { answerCallbackQuery, deleteMessage } from "../telegram.js";
+import {
+    answerCallbackQuery,
+    deleteMessage
+} from "../telegram.js";
 
 export async function deleteCallback(query, env) {
 
     const isAdmin = await isGroupAdmin(
+        env,
         query.message.chat.id,
-        query.from.id,
-        env
+        query.from.id
     );
 
     if (!isAdmin) {
@@ -19,5 +22,11 @@ export async function deleteCallback(query, env) {
         );
 
     }
+
+    return await deleteMessage(
+        env,
+        query.message.chat.id,
+        query.message.message_id
+    );
 
 }
