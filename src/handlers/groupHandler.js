@@ -14,7 +14,15 @@ export async function handleGroup(update, env) {
 
     if (session) {
 
-        const result = calculate(text);
+        //const result = calculate(text);
+
+        await sendMessage(
+            env,
+            update.message.chat.id,
+            text
+        );
+
+        return;
 
         await sendMessage(
             env,
