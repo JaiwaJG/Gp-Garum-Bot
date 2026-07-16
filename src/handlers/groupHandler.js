@@ -24,6 +24,8 @@ export async function handleGroup(update, env) {
 
         const result = calculate(text);
 
+        const formatted = result.toLocaleString("en-US");
+
         if (result === null) {
             return;
         }
@@ -31,7 +33,7 @@ export async function handleGroup(update, env) {
         await sendMessage(
             env,
             message.chat.id,
-            `<code>${text} = ${result} Ks</code>`,
+            `<b>${text} = ${formatted} Ks</b>`,
             {
                 parse_mode: "HTML",
                 reply_parameters: {
