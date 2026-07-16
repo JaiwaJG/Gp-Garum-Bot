@@ -16,7 +16,25 @@ export async function calcCommand(update, env) {
 
     if (!isAdmin) return;
 
-    const gameId = message.reply_to_message?.text?.trim();
+    if (!message.reply_to_message) {
+
+        await sendMessage(
+            env,
+            message.chat.id,
+            "<b>Please reply to a Game ID.</b>",
+            {
+                parse_mode: "HTML",
+                reply_parameters: {
+                    message_id: message.message_id
+                }
+            }
+        );
+
+        return;
+
+    }
+
+    const gameId = message.reply_to_message.text.trim();
 
     calcSessions.set(
         message.from.id,
@@ -30,6 +48,7 @@ export async function calcCommand(update, env) {
     const expression = text.replace("/calc", "").trim();
 
     if (!expression) {
+
         await sendMessage(
             env,
             message.chat.id,
@@ -54,11 +73,9 @@ export async function calcCommand(update, env) {
         `${gameId ? `<b>${gameId}</b>\n\n` : ""}<code>${expression} = ${result} Ks</code>`,
         {
             parse_mode: "HTML",
-            reply_parameters: message.reply_to_message
-                ? {
-                      message_id: message.reply_to_message.message_id
-                  }
-                : undefined
+            reply_parameters: {
+                message_id: message.reply_to_message.message_id
+            }
         }
     );
 
