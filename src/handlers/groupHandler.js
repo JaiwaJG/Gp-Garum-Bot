@@ -10,9 +10,11 @@ export async function handleGroup(update, env) {
     const message = update.message;
     const text = (message.text || "").trim();
 
-    const session = await env.CALC_SESSION.get(
-        String(message.from.id)
-    );
+    //const session = await env.CALC_SESSION.get(
+    //    String(message.from.id)
+    //);
+
+    const session = "on";
 
     if (
         session === "on" &&
