@@ -1,4 +1,4 @@
-import { sendMessage } from "../telegram.js";
+import { sendMessage } from "../../telegram.js";
 
 export async function handleUsage(update, env) {
 

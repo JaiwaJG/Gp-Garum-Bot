@@ -1,9 +1,8 @@
-import { calcCommand } from "../commands/calc.js";
 import { parseGameId } from "../parser.js";
 import { sendMessage } from "../telegram.js";
 import { gameIdKeyboard } from "../keyboards/gameId.js";
 import { calculate } from "../utils/calculator.js";
-import { banCommand } from "../commands/ban.js";
+import { GROUP_COMMANDS } from "../commands/registry.js";
 
 export async function handleGroup(update, env) {
 
@@ -91,17 +90,14 @@ export async function handleGroup(update, env) {
         return;
     }
 
-    switch (text.split(" ")[0].toLowerCase()) {
+    const command = text.split(" ")[0].slice(1).toLowerCase();
 
-        case "/calc":
-            return await calcCommand(update, env);
+    const handler = GROUP_COMMANDS[command];
 
-        case "/ban":
-            return await banCommand(update, env);
-
-        default:
-            return;
-
+    if (handler) {
+        return await handler(update, env);
     }
+
+    return;
 
 }

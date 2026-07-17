@@ -1,5 +1,5 @@
-import { handleStart } from "../commands/start.js";
-import { handleUsage } from "../commands/usage.js";
+import { handleStart } from "../commands/private/start.js";
+import { handleUsage } from "../commands/private/usage.js";
 
 export async function handlePrivate(update, env) {
 

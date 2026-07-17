@@ -1,5 +1,5 @@
-import { isGroupAdmin } from "../permissions/groupAdmin.js";
-import { sendMessage, banChatMember } from "../telegram.js";
+import { isGroupAdmin } from "../../permissions/groupAdmin.js";
+import { sendMessage, banChatMember } from "../../telegram.js";
 
 export async function banCommand(update, env) {
 

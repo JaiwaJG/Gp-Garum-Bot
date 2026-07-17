@@ -1,5 +1,5 @@
-import { isGroupAdmin } from "../permissions/groupAdmin.js";
-import { sendMessage } from "../telegram.js";
+import { isGroupAdmin } from "../../permissions/groupAdmin.js";
+import { sendMessage } from "../../telegram.js";
 
 export async function calcCommand(update, env) {
 
