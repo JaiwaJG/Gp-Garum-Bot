@@ -11,3 +11,7 @@ id = "e8568c0312594023921b9d956f2959da"
 [[kv_namespaces]]
 binding = "BAN_LIST"
 id = "e8568c0312594023921b9d956f2959da"
+
+[[kv_namespaces]]
+binding = "MODERATION_DB"
+id = "e8568c0312594023921b9d956f2959da"
