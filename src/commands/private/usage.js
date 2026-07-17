@@ -12,7 +12,8 @@ export async function handleUsage(update, env) {
 <tg-emoji emoji-id='5258513401784573443'>👥</tg-emoji>  Group Features
 
 • Send Game ID
-→ Bot shows:
+<tg-emoji emoji-id='5260450573768990626'>➡️</tg-emoji>  Bot shows:
+
 <tg-emoji emoji-id='5458668249396827657'>🎅</tg-emoji>  Copy
 <tg-emoji emoji-id='6208506738266610545'>🗑</tg-emoji>  Delete
 
