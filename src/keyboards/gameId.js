@@ -13,8 +13,8 @@ export function gameIdKeyboard(gameId) {
         {
           text: "Delete",
           callback_data: "delete",
-          style: "danger"
-          // icon_custom_emoji_id: "YOUR_EMOJI_ID"
+          style: "danger",
+          icon_custom_emoji_id: "5327887976997331125"
         }
       ]
     ]
