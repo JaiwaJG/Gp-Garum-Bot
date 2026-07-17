@@ -52,9 +52,16 @@ export async function handleGroup(update, env) {
 
     }
 
-    const gameId = parseGameId(text);
+    const parsed = parseGameId(text);
 
-    if (gameId) {
+    if (parsed) {
+
+        const gameId = parsed.gameId;
+        const extra = parsed.extra;
+
+        const display = extra
+            ? `${gameId} (${extra})`
+            : gameId;
 
         await sendMessage(
             env,
