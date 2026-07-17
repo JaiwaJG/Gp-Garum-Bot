@@ -8,6 +8,16 @@ import {
 export async function warnCommand(update, env) {
 
     const message = update.message;
+
+    const text = message.text.trim();
+
+    const parts = text.split(" ");
+
+    const reason =
+        parts.length > 1
+            ? parts.slice(1).join(" ")
+            : "No reason provided.";
+
     const reply = message.reply_to_message;
 
     if (!reply) {
@@ -68,11 +78,11 @@ export async function warnCommand(update, env) {
     return await sendMessage(
         env,
         message.chat.id,
-        `<tg-emoji emoji-id="5215677343594457295"></tg-emoji>   <b>Warning Issued</b>
+        `<tg-emoji emoji-id="5215677343594457295">⚠️</tg-emoji>   <b>Warning Issued</b>
 
 <tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${targetName}
 <tg-emoji emoji-id='5258420634785947640'>🔄</tg-emoji>  <b>Warnings:</b> ${newWarnCount}/3
-<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <b>Reason:</b> <i>No reason provided.</i>`,
+<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>`,
         {
             parse_mode: "HTML"
         }
