@@ -9,14 +9,14 @@ export async function handleUsage(update, env) {
         chatId,
 `<tg-emoji emoji-id='5258328383183396223'>📖</tg-emoji> GP Garum Bot Usage
 
-👥 Group Features
+<tg-emoji emoji-id='5258513401784573443'>👥</tg-emoji>  Group Features
 
 • Send Game ID
 → Bot shows:
-📋 Copy
-🗑 Delete
+<tg-emoji emoji-id='5458668249396827657'>🎅</tg-emoji>  Copy
+<tg-emoji emoji-id='6208506738266610545'>🗑</tg-emoji>  Delete
 
-👮 Admin Commands
+<tg-emoji emoji-id='6059615271679696088'>✅</tg-emoji>  Admin Commands
 
 /calc
 /payment
@@ -25,9 +25,9 @@ export async function handleUsage(update, env) {
 /pin
 /scam
 /ban
-/restrict
+/mute
 
-ℹ️ Only Group Admins can use admin commands.`,
+<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  Only Group Admins can use admin commands.`,
 {
     parse_mode: "HTML"
 }

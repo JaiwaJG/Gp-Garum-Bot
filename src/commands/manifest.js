@@ -1,4 +1,4 @@
-export const PRIVATE_COMMANDS = [
+export const PRIVATE_MENU = [
     {
         command: "start",
         description: "Start the bot"
@@ -9,7 +9,7 @@ export const PRIVATE_COMMANDS = [
     }
 ];
 
-export const GROUP_COMMANDS = [
+export const GROUP_MENU = [
     {
         command: "calc",
         description: "Calculator"

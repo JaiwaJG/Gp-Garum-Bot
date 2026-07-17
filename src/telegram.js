@@ -1,3 +1,5 @@
+import { PRIVATE_MENU, GROUP_MENU } from "./commands/manifest.js";
+
 export async function callTelegram(
     env,
     method,
@@ -145,4 +147,43 @@ export async function banChatMember(
             user_id: userId
         }
     );
+}
+
+export async function setMyCommands(
+    env,
+    commands,
+    scope = null
+) {
+
+    const data = {
+        commands
+    };
+
+    if (scope) {
+        data.scope = scope;
+    }
+
+    return callTelegram(
+        env,
+        "setMyCommands",
+        data
+    );
+
+}
+
+export async function syncCommands(env) {
+
+    await setMyCommands(
+        env,
+        PRIVATE_MENU
+    );
+
+    await setMyCommands(
+        env,
+        GROUP_MENU,
+        {
+            type: "all_group_chats"
+        }
+    );
+
 }
