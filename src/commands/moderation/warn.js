@@ -2,8 +2,10 @@ import { isGroupAdmin } from "../../permissions/groupAdmin.js";
 import { sendMessage } from "../../telegram.js";
 import {
     getWarnCount,
-    setWarnCount
+    setWarnCount,
+    getWarnData
 } from "../../respositories/warnRepository.js";
+import { restrictChatMember } from "../../telegram.js";
 
 export async function warnCommand(update, env) {
 
@@ -69,6 +71,20 @@ export async function warnCommand(update, env) {
         target.id,
         newWarnCount
     );
+
+    if (newWarnCount >= 3) {
+
+        const untilDate =
+            Math.floor(Date.now() / 1000) + (60 * 60 * 24);
+
+        await restrictChatMember(
+            env,
+            message.chat.id,
+            target.id,
+            untilDate
+        );
+
+    }
 
     const targetName =
         target.username
