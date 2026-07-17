@@ -12,6 +12,10 @@ export function parseGameId(text) {
         return null;
     }
 
-    return match[1];
+    return {
+        gameId: match[1],
+        extra: match[2] || null
+
+    };
 
 }

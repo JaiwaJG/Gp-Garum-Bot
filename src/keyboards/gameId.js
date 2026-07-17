@@ -9,12 +9,14 @@ export function gameIdKeyboard(gameId) {
           },
           style: "primary",
           icon_custom_emoji_id: "5458668249396827657"
-        },
+        }
+      ],
+      [
         {
           text: "Delete",
           callback_data: "delete",
           style: "danger",
-          icon_custom_emoji_id: "5327887976997331125"
+          icon_custom_emoji_id: "6208506738266610545"
         }
       ]
     ]
