@@ -1,5 +1,5 @@
 import { isGroupAdmin } from "../../permissions/groupAdmin.js";
-import { sendMessage } from "../../telegram.js";
+import { deleteMessage, sendMessage } from "../../telegram.js";
 import {
     getWarnCount,
     setWarnCount,
@@ -46,7 +46,7 @@ export async function warnCommand(update, env) {
         return await sendMessage(
             env,
             message.chat.id,
-            `<tg-emoji emoji-id="6208506738266610545"></tg-emoji> <b>Only group admins can use this command.</b>`,
+            `<tg-emoji emoji-id="6208506738266610545">⚠️</tg-emoji> <b>Only group admins can use this command.</b>`,
             {
                 parse_mode: "HTML"
             }
@@ -72,6 +72,11 @@ export async function warnCommand(update, env) {
         newWarnCount
     );
 
+    const targetName =
+        target.username
+            ? `@${target.username}`
+            : target.first_name;
+
     if (newWarnCount >= 3) {
 
         const untilDate =
@@ -84,12 +89,35 @@ export async function warnCommand(update, env) {
             untilDate
         );
 
-    }
+        await setWarnCount(
+            env,
+            message.chat.id,
+            target.id,
+            0
+        );
 
-    const targetName =
-        target.username
-            ? `@${target.username}`
-            : target.first_name;
+        await deleteMessage(
+            env,
+            message.chat.id,
+            message.message_id
+        );
+
+        return await sendMessage(
+            env,
+            message.chat.id,
+            `<tg-emoji emoji-id='5258267368877989660'>🔇</tg-emoji> <b>User Automatically Muted</b>
+
+<tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${targetName}
+<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>
+
+<tg-emoji emoji-id='5451732530048802485'>⏳</tg-emoji>  <b>Duration:</b> 24 Hours`,
+            {
+                parse_mode: "HTML",
+                reply_to_message_id: reply.message_id
+            }
+        );
+
+    }
 
     return await sendMessage(
         env,
@@ -98,9 +126,12 @@ export async function warnCommand(update, env) {
 
 <tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${targetName}
 <tg-emoji emoji-id='5258420634785947640'>🔄</tg-emoji>  <b>Warnings:</b> ${newWarnCount}/3
-<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>`,
+<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>
+
+<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <blockquote><b>Notice:</b> This user will be automatically muted for <b>24 hours</b> after receiving <b>3 warnings</b>.</blockquote>`,
         {
-            parse_mode: "HTML"
+            parse_mode: "HTML",
+            reply_to_message_id: reply.message_id
         }
     );
 

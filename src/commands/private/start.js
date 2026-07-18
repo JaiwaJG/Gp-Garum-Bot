@@ -11,7 +11,7 @@ export async function handleStart(update, env) {
         chatId,
 `Hello, <b>${firstName}</b> <tg-emoji emoji-id='6059615271679696088'>✅</tg-emoji>
 
-Welcome to GP Garum Bot.
+Welcome to <b>GP Garum Bot</b>.<tg-emoji emoji-id='5458668249396827657'>🎅</tg-emoji>
 
 Use /usage to learn how to use this bot.`,
         {
