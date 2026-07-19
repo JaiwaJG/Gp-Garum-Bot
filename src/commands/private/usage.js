@@ -21,9 +21,7 @@ export async function handleUsage(update, env) {
 
 /calc
 /payment
-/setpayment
 /complete
-/pin
 /scam
 /ban
 /mute

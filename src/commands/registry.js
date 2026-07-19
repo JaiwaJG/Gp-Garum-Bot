@@ -2,8 +2,10 @@
 //import { usageCommand } from "./private/usage.js";
 
 import { calcCommand } from "./group/calc.js";
+
 import { banCommand } from "./moderation/ban.js";
 import { warnCommand } from "./moderation/warn.js";
+import { restrictCommand } from "./moderation/restrict.js";
 import { muteCommand } from "./moderation/mute.js";
 import { kickCommand } from "./moderation/kick.js";
 import { pinCommand } from "./moderation/pin.js";
@@ -21,6 +23,7 @@ export const GROUP_COMMANDS = {
     ban: banCommand,
     warn: warnCommand,
     mute: muteCommand,
+    restrict: restrictCommand,
     kick: kickCommand,
     pin: pinCommand,
 };
