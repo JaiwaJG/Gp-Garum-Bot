@@ -19,14 +19,64 @@ export async function handleUsage(update, env) {
 
 <tg-emoji emoji-id='6059615271679696088'>✅</tg-emoji>  Admin Commands
 
-/calc
-/payment
-/complete
-/scam
-/ban
-/mute
+Welcome! Here are the available commands.
 
-<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  Only Group Admins can use admin commands.`,
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id='5190741648237161191'>🧮</tg-emoji>  <b>/calc</b>
+Enable Calculator Mode.
+
+<b>How to use:</b>
+• Reply to a Game ID message.
+• Type <code>/calc</code>.
+• Send an expression like:
+<code>5*5200</code>
+
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id="5215677343594457295">⚠️</tg-emoji>  <b>/warn [reason]</b>
+Warn a user.
+
+<b>How to use:</b>
+Reply to the user's message:
+<code>/warn Spam</code>
+
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id='5258476306152038031'>🔒</tg-emoji>  <b>/restrict</b>
+Restrict a user permanently.
+
+<b>How to use:</b>
+Reply to the user's message:
+<code>/restrict</code>
+
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id='6091190140368071716'>🚫</tg-emoji>  <b>/ban</b>
+Ban a user permanently.
+
+<b>How to use:</b>
+Reply to the user's message:
+<code>/ban</code>
+
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id='5258461531464539536'>📌</tg-emoji>  <b>/pin</b>
+Pin a message.
+
+<b>How to use:</b>
+Reply to the message:
+<code>/pin</code>
+
+━━━━━━━━━━━━━━
+
+<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <b>Notes</b>
+
+• Most moderation commands must be used by replying to a user's message.
+• Only group administrators can use moderation commands.
+• Private chat only supports:
+/start
+/usage`,
 {
     parse_mode: "HTML"
 }
