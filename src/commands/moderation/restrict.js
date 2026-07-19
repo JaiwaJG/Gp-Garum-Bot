@@ -5,7 +5,9 @@ import {
     restrictChatMember 
 } from "../../telegram.js";
 
-export async function restrictCommand(message, env) {
+export async function restrictCommand(update, env) {
+
+    const message = update.message;
 
     if (!(await isGroupAdmin(env, message.chat.id, message.from.id))) {
         return;
