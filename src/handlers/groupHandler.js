@@ -90,7 +90,11 @@ export async function handleGroup(update, env) {
         return;
     }
 
-    const command = text.split(" ")[0].slice(1).toLowerCase();
+    const command = text
+    .split(" ")[0]
+    .slice(1)
+    .split("@")[0]
+    .toLowerCase();
 
     const handler = GROUP_COMMANDS[command];
 
