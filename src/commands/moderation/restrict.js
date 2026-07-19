@@ -37,7 +37,7 @@ export async function restrictCommand(message, env) {
     await deleteMessage(
         env,
         message.chat.id,
-        message,message_id
+        message.message_id
     );
 
     return await sendMessage(
@@ -48,7 +48,7 @@ export async function restrictCommand(message, env) {
 <tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${target.username
                                                                         ? `@${target.username}`
                                                                         : target.first_name}
-<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>
+<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> Reason is not defined</i>
 
 <tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  This user has been restricted indefinitely.`,
         {
