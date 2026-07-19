@@ -28,6 +28,8 @@ export async function restrictCommand(message, env) {
 
     const target = reply.from;
 
+    const reason = "Np reason provided.";
+
     await restrictChatMember(
         env,
         message.chat.id,
