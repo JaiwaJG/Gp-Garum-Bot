@@ -47,7 +47,7 @@ export async function restrictCommand(update, env) {
     return await sendMessage(
         env,
         message.chat.id,
-        `🔒 <b>User Restricted</b>
+        `<tg-emoji emoji-id='5258476306152038031'>🔒</tg-emoji> <b>User Restricted</b>
 
 <tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${target.username
                                                                         ? `@${target.username}`

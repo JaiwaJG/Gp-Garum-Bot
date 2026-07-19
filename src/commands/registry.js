@@ -13,6 +13,8 @@ import { pinCommand } from "./moderation/pin.js";
 import { handleStart } from "./private/start.js";
 import { handleUsage } from "./private/usage.js";
 
+import { syncCommands } from "./Owner/synccommands.js";
+
 export const PRIVATE_COMMANDS = {
     start: handleStart,
     usage: handleUsage
@@ -26,4 +28,5 @@ export const GROUP_COMMANDS = {
     restrict: restrictCommand,
     kick: kickCommand,
     pin: pinCommand,
+    synccommands: syncCommands,
 };
