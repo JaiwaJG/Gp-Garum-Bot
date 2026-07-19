@@ -34,7 +34,7 @@ Enable Calculator Mode.
 
 ━━━━━━━━━━━━━━
 
-<tg-emoji emoji-id="5215677343594457295">⚠️</tg-emoji>  <b>/warn [reason]</b>
+<tg-emoji emoji-id="5215677343594457295">⚠️</tg-emoji>  <b>/warn</b>
 Warn a user.
 
 <b>How to use:</b>
