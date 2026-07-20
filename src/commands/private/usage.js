@@ -61,15 +61,6 @@ Reply to the user's message:
 
 ━━━━━━━━━━━━━━
 
-<tg-emoji emoji-id='5258461531464539536'>📌</tg-emoji>  <b>/pin</b>
-Pin a message.
-
-<b>How to use:</b>
-Reply to the message:
-<code>/pin</code>
-
-━━━━━━━━━━━━━━
-
 <tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <b>Notes</b>
 
 • Most moderation commands must be used by replying to a user's message.

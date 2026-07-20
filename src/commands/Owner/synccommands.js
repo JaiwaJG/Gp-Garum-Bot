@@ -45,20 +45,8 @@ export async function syncCommands(update, env) {
                     description: "Restrict a user"
                 },
                 {
-                    command: "mute",
-                    description: "Mute a user"
-                },
-                {
                     command: "ban",
                     description: "Ban a user"
-                },
-                {
-                    command: "kick",
-                    description: "Kick a user"
-                },
-                {
-                    command: "pin",
-                    description: "Pin a message"
                 }
             ]
         }

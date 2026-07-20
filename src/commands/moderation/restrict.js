@@ -9,6 +9,15 @@ export async function restrictCommand(update, env) {
 
     const message = update.message;
 
+    const text = message.text.trim();
+
+    const parts = text.split(" ");
+
+    const reason =
+        parts.length > 1
+            ? parts.slice(1).join(" ")
+            : "No reason provided.";
+
     if (!(await isGroupAdmin(env, message.chat.id, message.from.id))) {
         return;
     }
@@ -30,7 +39,9 @@ export async function restrictCommand(update, env) {
 
     const target = reply.from;
 
-    const reason = "Np reason provided.";
+    const targetName = target.username
+    ? `@${target.username}`
+    : target.first_name;
 
     await restrictChatMember(
         env,
@@ -49,10 +60,8 @@ export async function restrictCommand(update, env) {
         message.chat.id,
         `<tg-emoji emoji-id='5258476306152038031'>🔒</tg-emoji> <b>User Restricted</b>
 
-<tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${target.username
-                                                                        ? `@${target.username}`
-                                                                        : target.first_name}
-<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> Reason is not defined</i>
+<tg-emoji emoji-id='5258011929993026890'>👤</tg-emoji>  <b>User:</b> ${targetName}
+<tg-emoji emoji-id='5370546867786523009'>📝</tg-emoji>  <b>Reason:</b> <i> ${reason}</i>
 
 <tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  This user has been restricted indefinitely.`,
         {

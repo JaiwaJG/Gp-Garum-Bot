@@ -9,6 +9,7 @@ import { restrictCommand } from "./moderation/restrict.js";
 import { muteCommand } from "./moderation/mute.js";
 import { kickCommand } from "./moderation/kick.js";
 import { pinCommand } from "./moderation/pin.js";
+import { infoCommand } from "./moderation/info.js";
 
 import { handleStart } from "./private/start.js";
 import { handleUsage } from "./private/usage.js";
@@ -28,5 +29,6 @@ export const GROUP_COMMANDS = {
     restrict: restrictCommand,
     kick: kickCommand,
     pin: pinCommand,
+    info: infoCommand,
     synccommands: syncCommands,
 };
