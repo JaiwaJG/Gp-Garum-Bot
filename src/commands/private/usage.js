@@ -72,6 +72,7 @@ Reply to the user's message:
 
 <tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <b>Notes</b>
 
+• GP Garum Bot must access admin permision at bot to use admin command.
 • Most moderation commands must be used by replying to a user's message.
 • Only group administrators can use moderation commands.
 • Private chat only supports:
