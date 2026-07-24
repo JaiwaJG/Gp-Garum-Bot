@@ -61,6 +61,15 @@ Reply to the user's message:
 
 ━━━━━━━━━━━━━━
 
+<tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji> <b>/info</b>
+User infomation.
+
+<b>How to use:</b>
+Reply to the user's message:
+<code>/info</code>
+
+━━━━━━━━━━━━━━
+
 <tg-emoji emoji-id='5258503720928288433'>ℹ️</tg-emoji>  <b>Notes</b>
 
 • Most moderation commands must be used by replying to a user's message.

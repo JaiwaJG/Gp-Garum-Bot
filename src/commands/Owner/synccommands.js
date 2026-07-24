@@ -47,6 +47,10 @@ export async function syncCommands(update, env) {
                 {
                     command: "ban",
                     description: "Ban a user"
+                },
+                {
+                    command: "info",
+                    description: "Show user info"
                 }
             ]
         }
