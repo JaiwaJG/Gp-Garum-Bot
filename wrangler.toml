@@ -1,4 +1,4 @@
-name = "gp-garum-bot"
+name = "gpgarum-bot"
 
 main = "src/worker.js"
 
